@@ -24,3 +24,6 @@ news = requests.get(
 ).json()
 
 print("\nNews:")
+
+for article in news["articles"][:5]:
+    print("-", article["title"])
