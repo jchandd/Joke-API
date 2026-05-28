@@ -9,9 +9,18 @@ news_key = "0ab27a701b0940ccbf34abef718528f7"
 
 city = input("City: ")
 
-weather = requests.get(
-    f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={weather_key}&units=metric").json()
+weather = requests.get( # Get weather data from OpenWeatherMap API
+    f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={weather_key}&units=metric").json() # Convert the response to JSON format
 
 print("\nWeather:")
-print(weather["weather"][0]["description"])
+print(weather["weather"][0]["description"]) # Weather description
 print(str(weather["main"]["temp"]) + "°C")
+
+country = weather["sys"]["country"].lower()
+
+
+news = requests.get(
+    f"https://newsapi.org/v2/top-headlines?country={country}&apiKey={news_key}"
+).json()
+
+print("\nNews:")
