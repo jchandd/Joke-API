@@ -25,5 +25,5 @@ news = requests.get(
 
 print("\nNews:")
 
-for article in news["articles"][:5]:
-    print("-", article["title"])
+for article in news["articles"][:5]: # Print the top 5 news articles
+    print("- " + article["title"]) 
